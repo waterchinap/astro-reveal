@@ -1,0 +1,41 @@
+---
+import 'reveal.js/reset.css';
+import 'reveal.js/reveal.css';
+import 'reveal.js/theme/black.css';
+import 'reveal.js/plugin/highlight/monokai.css'
+import '../styles/global.css'
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+		/>
+
+		<title>reveal.js</title>
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+			<slot />
+			</div>
+		</div>
+  <script >
+    import Reveal from 'reveal.js'
+    import RevealMarkdown from 'reveal.js/plugin/markdown'
+    import RevealHighlight from 'reveal.js/plugin/highlight'
+    import RevealNotes from 'reveal.js/plugin/notes'
+
+    Reveal.initialize({
+      hash: true,
+      plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+			autoSlide: 6000,
+			loop: true,
+    })
+  </script>
+	</body>
+</html>

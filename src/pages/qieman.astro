@@ -1,0 +1,38 @@
+---
+import RevealLayout from '../layouts/RevealLayout.astro'
+import Cover from '../components/Cover.astro'
+import qieman from './qieman.json'
+import CardTableSlide from '../components/CardTableSlide.astro'
+
+function toPercent(value, decimals = 2) {
+  if (typeof value !== 'number' || isNaN(value)) {
+    return '';
+  }
+  return (value * 100).toFixed(decimals) + '%';
+}
+const res = await fetch('http://localhost:8000/api/slides')
+const rawdata = await res.json()
+const testdata = rawdata.data.idxEvalList
+const sel = testdata.map(
+  ({indexCode, indexName, pe, pePercentile, pb, pbPercentile, roe, group}) => ({
+    指数名称: indexName,
+    指数代码: indexCode,
+    pe,
+    pe百分位: toPercent(pePercentile),
+    pb,
+    pb百分位: toPercent(pbPercentile),
+    roe: toPercent(roe),
+    group
+  })
+)
+const pdate = new Date(rawdata.data.date).toLocaleDateString('zh-CN')
+---
+
+<RevealLayout>
+
+<Cover title='指数估值精选' subtitle={pdate} />
+<CardTableSlide carddata={sel} cols=3 rows=2 />
+
+
+</RevealLayout>
+

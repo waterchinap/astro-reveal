@@ -1,0 +1,17 @@
+---
+const { cols=3 } = Astro.props;
+
+const colClasses = {
+  1: 'grid-cols-1',
+  2: 'grid-cols-2',
+  3: 'grid-cols-3',
+  4: 'grid-cols-4',
+  5: 'grid-cols-5',
+  6: 'grid-cols-6',
+};
+const gridClass = colClasses[cols] || 'grid-cols-3';
+---
+
+<div class={`grid ${gridClass} gap-4`}>
+  <slot />
+</div>

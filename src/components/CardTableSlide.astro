@@ -1,0 +1,22 @@
+---
+import {paginate} from '../utils/paginate.js'
+import Slide from '../components/Slide.astro'
+import CardBox from './CardBox.astro';
+import CardTable from './CardTable.astro'
+
+const {carddata, title, cols, rows=3 } = Astro.props;
+const pagesize = cols * rows;
+const pages = paginate(carddata, pagesize);
+---
+
+{pages.map(pageCards => (
+<Slide title={title}>
+<CardBox cols={cols}>
+{Object.values(pageCards).map(pageCard => 
+  <CardTable
+    items={pageCard} 
+  />)
+  }
+</CardBox>
+</Slide>
+))}

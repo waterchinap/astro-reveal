@@ -1,0 +1,20 @@
+---
+import Card from '../components/Card.astro'
+
+const { title, carddata } = Astro.props;
+
+// 将对象转换为数组以便遍历
+const cardEntries = Object.entries(carddata);
+---
+
+<section>
+  <h3>{title}</h3>
+  <div class="grid grid-cols-3 gap-4">
+    {cardEntries.map(([key, value]) => (
+      <Card 
+        cardtitle={key} 
+        cardvalue={value} 
+      />
+    ))}
+  </div>
+</section>

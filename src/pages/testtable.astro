@@ -1,0 +1,46 @@
+---
+import RevealLayout from '../layouts/RevealLayout.astro'
+import TableGroup from '../components/TableGroup.astro'
+import qieman from './qieman.json'
+import Slide from '../components/Slide.astro'
+import CardTable from '../components/CardTable.astro'
+import CardTableSlide from '../components/CardTableSlide.astro'
+
+function toPercent(value, decimals = 2) {
+  if (typeof value !== 'number' || isNaN(value)) {
+    return '';
+  }
+  return (value * 100).toFixed(decimals) + '%';
+}
+const testdata = qieman.data.idxEvalList
+const sel = testdata.map(
+  ({indexCode, indexName, pe, pePercentile, pb, pbPercentile, roe, group}) => ({
+    指数名称: indexName,
+    指数代码: indexCode,
+    pe,
+    pe百分位: toPercent(pePercentile),
+    pb,
+    pb百分位: toPercent(pbPercentile),
+    roe: toPercent(roe),
+    group
+  })
+)
+const pdate = new Date(qieman.data.date).toLocaleDateString('zh-CN')
+---
+
+<RevealLayout>
+
+<TableGroup
+  title = {pdate}
+  data = {sel}
+  rowsPerPage = {6}
+/>
+<Slide>
+<CardTable cardtitle='test' items={sel[0]} />
+</Slide>
+
+<CardTableSlide carddata={sel} cols=3 rows=2 />
+
+
+</RevealLayout>
+

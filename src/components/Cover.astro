@@ -1,0 +1,12 @@
+---
+const today = new Date().toISOString().split('T')['0']
+
+const { title, subtitle=today } = Astro.props;
+---
+
+<section>
+
+<h1 class="r-fit-text">{title}</h1>
+<h2 class="r-fit-text">{subtitle}</h2>
+
+</section>

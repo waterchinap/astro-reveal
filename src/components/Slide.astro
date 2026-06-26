@@ -1,0 +1,8 @@
+---
+const { title, duration='6000' } = Astro.props;
+---
+
+<section data-autoslide={duration}>
+  {title && <h1>{title}</h1>}
+  <slot />
+</section>

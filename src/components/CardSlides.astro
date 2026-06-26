@@ -1,0 +1,17 @@
+---
+import {paginate} from '../utils/paginate.js'
+import Slide from '../components/Slide.astro'
+import CardGroup from '../components/CardGroup.astro'
+
+const { title, carddata, cols, rows=3 } = Astro.props;
+const pagesize = cols * rows;
+const pages = paginate(carddata, pagesize);
+---
+
+{pages.map((pageCards, pageIndex) => (
+  <CardGroup 
+    title={title} 
+    carddata={pageCards} 
+    cols={cols} 
+  />
+))}

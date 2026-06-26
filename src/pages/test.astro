@@ -1,0 +1,55 @@
+---
+import SlideSimple from '../components/SlideSimple.astro';
+import RevealLayout from '../layouts/RevealLayout.astro';
+import Cover from '../components/Cover.astro';
+import TextOnlyLeft from '../components/TextOnlyLeft.astro';
+import TitleH2 from '../components/TitleH2.astro'
+import TitleP from '../components/TitleP.astro'
+import TitleLi from '../components/TitleLi.astro'
+import TitleOl from '../components/TitleOl.astro'
+import ImgOnly from '../components/ImgOnly.astro'
+import Stat from '../components/Stat.astro'
+import CardSlides from '../components/CardGroup.astro'
+import CardGroup from '../components/CardGroup.astro'
+import Slide from '../components/Slide.astro'
+const text = " Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build"
+const textlist = ["one", "two", "three", "four"]
+const imgurl = 'testimg.jpg'
+const imgurl2 = 'https://images.unsplash.com/photo-1548679847-1d4ff48016c7?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+const cdata = {cpu:1000, gpu:2000, ddr5:1000, ssd:1500}
+const pagedata = {
+        "indexCode": "399812.SZ",
+        "indexName": "养老产业",
+        "date": 1782230400000,
+        "pe": 10.63,
+        "pePercentile": 0.0014,
+        "peHigh": 31.28,
+        "peLow": 10.43,
+        "pb": 1.65,
+        "pbLow": 1.59,
+        "pbHigh": 4.3,
+        "pbPercentile": 0.0049,
+        "roe": 0.1548,
+        "scoreBy": 0,
+        "source": 0,
+        "fund": "[\"000968\"]",
+        "group": "LOW",
+      }
+
+---
+
+<RevealLayout>
+
+  <Cover title='A BIG THING'  />
+	<SlideSimple title='test' />
+	<TitleH2 title={text} />
+  <TextOnlyLeft title={text} />
+  <TitleP title="Title And Paragrapy" text={text} />
+  <TitleLi title="List of point" textlist={textlist} />
+  <TitleOl title="Oroder of point" textlist={textlist} />
+  <ImgOnly title='fall' imgurl={imgurl2} />
+  <Stat title='cards' carddata={cdata} />
+  <CardGroup title='test' carddata={pagedata} cols=4 />
+  <CardSlides carddata={pagedata} cols=2 rows=3 />
+</RevealLayout>
+
