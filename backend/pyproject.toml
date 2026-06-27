@@ -1,0 +1,103 @@
+[project]
+name = "backend"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "akshare>=1.18.64",
+    "loguru>=0.7.3",
+    "pandas-stubs>=3.0.3.260530",
+    "playwright>=1.60.0",
+]
+
+[[tool.uv.index]]
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+default = true
+
+
+[tool.basedpyright]
+# 基础配置
+# pythonVersion = "3.13"  # 应该根据 requires-python 指定具体版本
+# pythonPlatform = "Linux"
+
+# 类型检查严格程度
+typeCheckingMode = "basic"
+
+# 需要检查的路径
+# include = ["src", "tests"]
+exclude = [
+    "**/__pycache__",
+    "**/.venv",
+    "**/.git",
+    "**/venv",
+    "**/node_modules",
+    "**/dist",
+    "**/build",
+    "**/.pytest_cache",
+    "**/.mypy_cache",
+    "**/.ruff_cache"
+]
+
+# 常用忽略规则
+# [tool.basedpyright.report]
+reportMissingImports = "warning"
+reportMissingTypeStubs = "warning"
+reportUnknownMemberType = "none"
+reportUnknownVariableType = "none"
+reportUnknownArgumentType = "none"
+reportUnknownParameterType = "none"
+reportPrivateImportUsage = "warning"
+reportUnusedImport = "warning"
+reportUnusedVariable = "warning"
+reportGeneralTypeIssues = "warning"
+reportOptionalSubscript = "warning"
+reportOptionalMemberAccess = "warning"
+reportOptionalCall = "warning"
+reportAttributeAccessIssue = "warning"
+reportAssignmentType = "warning"
+reportReturnType = "warning"
+reportCallIssue = "warning"
+reportIndexIssue = "warning"
+reportOperatorIssue = "warning"
+# reportStringTypeIssue = "warning"
+reportArgumentType = "warning"
+reportAny = "none"
+reportExplicitAny = "none"
+reportImplicitStringConcatenation = "warning"
+reportUnnecessaryComparison = "warning"
+reportUnnecessaryContains = "warning"
+reportUnnecessaryIsInstance = "warning"
+reportUnnecessaryCast = "warning"
+reportUnnecessaryTypeIgnoreComment = "warning"
+reportTypeCommentUsage = "warning"
+reportIncompatibleMethodOverride = "warning"
+reportIncompatibleVariableOverride = "warning"
+reportMissingParameterType = "none"
+reportMissingTypeArgument = "warning"
+reportInvalidTypeVarUse = "warning"
+reportCallInDefaultInitializer = "warning"
+reportMatchNotExhaustive = "warning"
+reportSelfClsParameterName = "warning"
+reportImplicitOverride = "warning"
+reportUnknownLambdaType = "none"
+reportUnusedCoroutine = "warning"
+reportUnusedCallResult = "none"
+reportUnusedParameter = "warning"
+reportUnusedClass = "warning"
+reportUnusedFunction = "warning"
+# reportUnusedMethod = "warning"
+
+# # # 针对特定模块或路径的额外配置
+# [tool.basedpyright.overrides]
+# "**/tests/**" = {
+#     reportUnusedFunction = "none",
+#     reportUnusedClass = "none",
+#     reportUnusedMethod = "none",
+#     reportUnusedImport = "none",
+#     reportUnusedVariable = "none",
+# }
+# "**/migrations/**" = {
+#     reportUnusedImport = "none",
+#     reportUnusedVariable = "none",
+# }
