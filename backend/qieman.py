@@ -1,5 +1,10 @@
 from playwright.sync_api import sync_playwright
 import json
+import akshare as ak
+import pandas as pd
+from loguru import logger
+
+
 
 def get_data_with_auto_headers():
     with sync_playwright() as p:
@@ -15,7 +20,7 @@ def get_data_with_auto_headers():
         def handle_response(response):
             # 匹配目标 API 路径
             if "pmdj/v2/idx-eval/latest" in response.url:
-                print(f"检测到目标请求: {response.url}")
+                logger.info(f"检测到目标请求: {response.url}")
                 # 提取该请求发送时携带的 Headers
                 captured_data["headers"] = response.request.headers
                 # 直接获取响应内容
@@ -33,13 +38,18 @@ if __name__ == "__main__":
     result = get_data_with_auto_headers()
     
     if result["headers"]:
-        print("\n--- 自动化提取的关键 Header ---")
-        print(f"x-sign: {result['headers'].get('x-sign')}")
-        print(f"x-request-id: {result['headers'].get('x-request-id')}")
+        logger.info("\n--- 自动化提取的关键 Header ---")
+        logger.info(f"x-sign: {result['headers'].get('x-sign')}")
+        logger.info(f"x-request-id: {result['headers'].get('x-request-id')}")
         
-        print("\n--- 获取到的数据预览 ---")
-        # print(result["json"])
+        logger.info("\n--- 获取到的数据预览 ---")
+        # logger.info(result["json"])
         with open('../src/assets/qieman.json', 'w') as f:
             json.dump(result['json'], f)
     else:
-        print("未能捕获到目标请求，请检查 URL 是否正确。")
+        logger.info("未能捕获到目标请求，请检查 URL 是否正确。")
+
+    emnews = ak.stock_info_global_em()
+    emnews.to_json('../src/assets/emnews.json', force_ascii=False)
+    logger.info('json saved')
+
