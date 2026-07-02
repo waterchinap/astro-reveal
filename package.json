@@ -8,14 +8,20 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "preview": "npm run build && wrangler dev",
+    "astro": "astro",
+    "generate-types": "wrangler types",
+    "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^14.1.0",
     "@tailwindcss/vite": "^4.3.1",
     "astro": "^7.0.0",
     "daisyui": "^5.5.23",
     "reveal.js": "^6.0.1",
     "tailwindcss": "^4.3.1"
+  },
+  "devDependencies": {
+    "wrangler": "^4.106.0"
   }
 }
