@@ -36,7 +36,7 @@ const pdate = new Date(qieman.date).toLocaleDateString('zh-CN')
 <CardTableSlide carddata={sel} cols=2 rows=1 />
 
 <Cover title='东方财富新闻' subtitle={pdate} />
-{Object.values(emtitle).map(item => <TitleH2 title={item} />)}
+{Object.values(emtitle).slice(0,100).map(item => <TitleH2 title={item} />)}
 
 </RevealLayout>
 
