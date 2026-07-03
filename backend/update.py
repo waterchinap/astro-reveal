@@ -135,12 +135,12 @@ def main():
         sys.exit(1)
 
     # 2. 执行 update.py
-    logger.info("▶️  执行 update.py...")
-    success, output = run_cmd(["uv", "run", "--script", "qieman.py"], cwd=PROJECT_DIR)
+    logger.info("▶️  执行 qieman.py...")
+    success, output = run_cmd(["uv", "run",  "qieman.py"], cwd=PROJECT_DIR)
     if not success:
         logger.error(f"❌ update.py 执行失败: {output}")
         sys.exit(1)
-    logger.info("✅ update.py 执行成功")
+    logger.info("✅ qieman.py 执行成功")
 
     # 3. git add
     if not git_add(PDIR):
