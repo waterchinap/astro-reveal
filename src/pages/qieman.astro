@@ -33,7 +33,7 @@ const pdate = new Date(qieman.date).toLocaleDateString('zh-CN')
 <RevealLayout>
 
 <Cover title='指数估值精选' subtitle={pdate} />
-<CardTableSlide carddata={sel} cols=3 rows=2 />
+<CardTableSlide carddata={sel} cols=2 rows=1 />
 
 <Cover title='东方财富新闻' subtitle={pdate} />
 {Object.values(emtitle).map(item => <TitleH2 title={item} />)}

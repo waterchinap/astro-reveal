@@ -7,12 +7,12 @@ const colorMap = {LOW:'green', MID:'yellow', HIGH: 'red'}
 const groupColor = colorMap[items['group']] || 'white'
 ---
 
-<div class="flex flex-col !border border-solid border-white rounded-sm w-64 mx-auto !p-1 ">
-  <p class='!font-bold' style={`color:${groupColor}`}>{cardtitle}</p>
+<div class="flex flex-col !border border-solid border-white rounded-sm w-320 mx-auto !p-8 ">
+  <h2 class='!font-bold' style={`color:${groupColor}`}>{cardtitle}</h2>
   {restkv.slice(0,-1).map(([key, value])=> (
-  <div class="flex flex-row flex-nowrap justify-between !py-1">
-    <div class='!px-2 !text-xl'>{key}</div>
-    <div class='!px-2 !text-xl'>{value}</div>
+  <div class="flex flex-row flex-nowrap justify-between">
+    <p>{key}</p>
+    <p>{value}</p>
   </div>
   ))}
 </div>

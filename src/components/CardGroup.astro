@@ -17,7 +17,7 @@ const cardEntries = Object.entries(carddata);
 ---
 <section>
   {title && <h1>{title}</h1>}
-  <div class={`grid ${gridClass} gap-4`}>
+  <div class={`grid ${gridClass} gap-4 justify-between justify-items-center`}>
     {cardEntries.map(([key, value]) => (
       <Card 
         cardtitle={key} 
