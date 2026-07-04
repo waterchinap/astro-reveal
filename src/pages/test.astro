@@ -35,6 +35,7 @@ const pagedata = {
         "fund": "[\"000968\"]",
         "group": "LOW",
       }
+const chinese = '蔚来法务部：有网络账号长期发布涉蔚来各品牌虚假促销信息 多名嫌疑人已被依法采取刑事强制措施'
 
 ---
 
@@ -45,11 +46,9 @@ const pagedata = {
 	<TitleH2 title={text} />
   <TextOnlyLeft title={text} />
   <TitleP title="Title And Paragrapy" text={text} />
+  <TitleP title="Title And Paragrapy" text={chinese} />
   <TitleLi title="List of point" textlist={textlist} />
   <TitleOl title="Oroder of point" textlist={textlist} />
   <ImgOnly title='fall' imgurl={imgurl2} />
-  <Stat title='cards' carddata={cdata} />
-  <CardGroup title='test' carddata={pagedata} cols=4 />
-  <CardSlides carddata={pagedata} cols=2 rows=3 />
 </RevealLayout>
 

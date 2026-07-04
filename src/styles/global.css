@@ -1,5 +1,2 @@
 @import "tailwindcss";
-
-@plugin "daisyui" {
-  themes: dark;
-}
+@plugin '@tailwindcss/typography';

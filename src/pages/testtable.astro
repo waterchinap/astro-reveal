@@ -1,7 +1,7 @@
 ---
 import RevealLayout from '../layouts/RevealLayout.astro'
 import TableGroup from '../components/TableGroup.astro'
-import qieman from './qieman.json'
+import qieman from '../assets/qieman.json'
 import Slide from '../components/Slide.astro'
 import CardTable from '../components/CardTable.astro'
 import CardTableSlide from '../components/CardTableSlide.astro'
@@ -12,7 +12,7 @@ function toPercent(value, decimals = 2) {
   }
   return (value * 100).toFixed(decimals) + '%';
 }
-const testdata = qieman.data.idxEvalList
+const testdata = qieman.idxEvalList
 const sel = testdata.map(
   ({indexCode, indexName, pe, pePercentile, pb, pbPercentile, roe, group}) => ({
     指数名称: indexName,
@@ -25,7 +25,7 @@ const sel = testdata.map(
     group
   })
 )
-const pdate = new Date(qieman.data.date).toLocaleDateString('zh-CN')
+const pdate = new Date(qieman.date).toLocaleDateString('zh-CN')
 ---
 
 <RevealLayout>
@@ -35,12 +35,6 @@ const pdate = new Date(qieman.data.date).toLocaleDateString('zh-CN')
   data = {sel}
   rowsPerPage = {6}
 />
-<Slide>
-<CardTable cardtitle='test' items={sel[0]} />
-</Slide>
-
-<CardTableSlide carddata={sel} cols=3 rows=2 />
-
 
 </RevealLayout>
 

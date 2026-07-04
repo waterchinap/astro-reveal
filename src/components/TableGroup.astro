@@ -19,7 +19,7 @@ const pages = pagearr(data, rowsPerPage);
   <section>
     {title && <h2>{title}</h2>}
     
-    <table class='!text-2xl' >
+    <table class='!text-2xl min-w-9/10 min-h-4/5 r-stretch !text-4xl content-center' >
       <thead>
         <tr>
           <th>#</th>
@@ -32,9 +32,9 @@ const pages = pagearr(data, rowsPerPage);
       <tbody>
         {pageRows.map((row, rowIndex) => (
           <tr>
-            <td>{pageIndex * rowsPerPage + rowIndex + 1}</td>
+            <td class = 'content-center items-center'>{pageIndex * rowsPerPage + rowIndex + 1}</td>
             {columns.map(col => (
-              <td>{row[col]}</td>
+              <td class="content-center">{row[col]}</td>
             ))}
           </tr>
         ))}
