@@ -9,7 +9,14 @@ from loguru import logger
 def get_data_with_auto_headers():
     with sync_playwright() as p:
         # 启动 Chromium 浏览器
-        browser = p.chromium.launch(headless=True) # 改为 False 可以看到浏览器操作
+        browser = p.chromium.launch(
+            headless=True,
+            args=[
+                "--no-sandbox",
+                "--disable-dev-shm-usage",
+                "--dns-prefetch-disable"
+            ]                        
+        ) # 改为 False 可以看到浏览器操作
         context = browser.new_context()
         page = context.new_page()
 
