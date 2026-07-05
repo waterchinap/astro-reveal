@@ -14,6 +14,7 @@ dependencies = [
     "openpyxl>=3.1.5",
     "pandas-stubs>=3.0.3.260530",
     "playwright>=1.60.0",
+    "polars>=1.42.1",
     "xlsx2csv>=0.8.6",
 ]
 
