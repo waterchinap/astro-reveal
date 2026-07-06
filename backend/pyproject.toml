@@ -15,6 +15,9 @@ dependencies = [
     "pandas-stubs>=3.0.3.260530",
     "playwright>=1.60.0",
     "polars>=1.42.1",
+    "pydantic>=2.13.4",
+    "tenacity>=9.1.4",
+    "typer>=0.26.8",
     "xlsx2csv>=0.8.6",
 ]
 

@@ -53,7 +53,14 @@ def _(df, pl):
 
 
 @app.cell
-def _():
+def _(df, pl):
+    df.group_by(pl.col('cat1')).agg(pl.col('cat4').n_unique().alias('cat4_count')).sort('cat4_count',descending=True)
+    return
+
+
+@app.cell
+def _(df, pl):
+    df.select(pl.col('cat4').n_unique())
     return
 
 
