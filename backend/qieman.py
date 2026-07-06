@@ -57,6 +57,6 @@ if __name__ == "__main__":
         logger.info("未能捕获到目标请求，请检查 URL 是否正确。")
 
     emnews = ak.stock_info_global_em()
-    emnews.to_json('../src/assets/emnews.json', force_ascii=False)
+    emnews.to_json('../src/assets/emnews.json', orient='values',force_ascii=False)
     logger.info('json saved')
 

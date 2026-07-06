@@ -1,15 +1,15 @@
-#!/usr/bin/env python3
 """
 使用 curl 执行批量下载脚本
 读取 YAML 配置文件，依次执行 curl 命令下载文件
 """
 
 import subprocess
-import sys
 import time
 import random
+import shlex
 from pathlib import Path
-from typing import List, Dict, Any
+from typing import Annotated
+from datetime import datetime
 
 import typer
 import yaml
@@ -27,7 +27,7 @@ class DownloadTask(BaseModel):
 
 class DownloadConfig(BaseModel):
     """下载配置"""
-    tasks: List[DownloadTask] = Field(..., description="下载任务列表")
+    tasks: list[DownloadTask] = Field(..., description="下载任务列表")
     output_dir: str = Field("./downloads", description="输出目录")
     delay_min: float = Field(1.0, description="最小延迟秒数")
     delay_max: float = Field(3.0, description="最大延迟秒数")
@@ -56,20 +56,33 @@ def load_config(config_path: Path) -> DownloadConfig:
     return config
 
 
+import shlex # <--- 1. 在文件开头导入 shlex 模块
+
+# ... 其他代码 ...
+
 def execute_curl(curl_command: str, output_path: Path) -> bool:
     """执行 curl 命令下载文件"""
     # 替换输出路径占位符
     command = curl_command.replace("{output}", str(output_path))
 
-    logger.debug(f"执行命令: {command[:200]}...")
+    # 2. 使用 shlex.split 将命令字符串分割成列表
+    # 这可以正确处理带引号的参数和空格
+    try:
+        command_list = shlex.split(command)
+    except ValueError as e:
+        logger.error(f"命令解析失败: {e}")
+        return False
+
+    logger.debug(f"执行命令: {' '.join(command_list[:10])}...") # 只打印前几个参数用于调试
 
     try:
+        # 3. 传入命令列表，而不是字符串
+        # 注意：这里不需要 shell=True
         result = subprocess.run(
-            command,
-            shell=True,
+            command_list,
             capture_output=True,
             text=True,
-            timeout=300,  # 5分钟超时
+            timeout=300,
         )
 
         if result.returncode == 0:
@@ -86,7 +99,6 @@ def execute_curl(curl_command: str, output_path: Path) -> bool:
     except Exception as e:
         logger.error(f"执行异常: {e}")
         return False
-
 
 def download_with_retry(task: DownloadTask, output_path: Path, retry_times: int) -> bool:
     """带重试的下载"""
@@ -113,9 +125,9 @@ def download_with_retry(task: DownloadTask, output_path: Path, retry_times: int)
 
 @app.command()
 def run(
-    config_file: str = typer.Argument(..., help="YAML 配置文件路径"),
-    output_dir: str = typer.Option(None, "--output", "-o", help="覆盖输出目录"),
-    dry_run: bool = typer.Option(False, "--dry-run", help="只打印不执行"),
+    config_file: Annotated[str, typer.Argument(..., help="YAML 配置文件路径")],
+    output_dir: Annotated[str | None, typer.Option("--output", "-o", help="覆盖输出目录")] = None,
+    dry_run: Annotated[bool, typer.Option("--dry-run", help="只打印不执行")] = False,
 ):
     """根据 YAML 配置文件执行批量下载"""
     config_path = Path(config_file)
@@ -135,8 +147,8 @@ def run(
     for i, task in enumerate(config.tasks, 1):
         logger.info(f"\n[{i}/{len(config.tasks)}] 处理: {task.filename}")
 
-        output_path = out_dir / task.filename
-
+        date_prefix = datetime.now().strftime("%Y%m%d")  # 生成类似 "20260706" 的日期前缀
+        output_path = out_dir / f"{date_prefix}_{task.filename}"
         if dry_run:
             logger.info(f"[DRY RUN] 将下载到: {output_path}")
             logger.info(f"[DRY RUN] 命令: {task.curl_command[:300]}...")
@@ -172,7 +184,7 @@ def run(
 
 @app.command()
 def validate(
-    config_file: str = typer.Argument(..., help="YAML 配置文件路径"),
+    config_file: Annotated[str, typer.Argument(..., help="YAML 配置文件路径")],
 ):
     """验证 YAML 配置文件格式"""
     config_path = Path(config_file)
@@ -187,9 +199,5 @@ def validate(
         raise typer.Exit(code=1)
 
 
-def main():
-    app()
-
-
 if __name__ == "__main__":
-    main()
+    app()

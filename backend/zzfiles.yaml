@@ -1,10 +1,10 @@
 tasks:
-  - filename: "000902closeweight.xlsx"
+  - filename: "weight.xlsx"
     curl_command: >
-      curl "https://oss-ch.csindex.com.cn/static/html/csindex/public/uploads/file/autofile/closeweight/000902closeweight.xls"
+      curl -L -f --show-error "https://oss-ch.csindex.com.cn/static/html/csindex/public/uploads/file/autofile/closeweight/000902closeweight.xls"
       -o "{output}"
 
-  - filename: "行业分类.xlsx"
+  - filename: "zzindu.xlsx"
     curl_command: >
       curl -L -X POST
       "https://www.csindex.com.cn/csindex-home/exportExcel/security-industry-search-excel/CH"

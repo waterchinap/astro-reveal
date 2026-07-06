@@ -1,13 +1,13 @@
 ---
 const today = new Date().toISOString().split('T')['0']
 
-const { title, subtitle=today } = Astro.props;
+const { title, subtitle } = Astro.props;
 ---
 
 <section>
 
 <h1 class="r-fit-text">{title}</h1>
 <hr />
-<h1>{subtitle}</h1>
+{subtitle && <h1>{subtitle}</h1>}
 
 </section>
