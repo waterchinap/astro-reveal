@@ -13,7 +13,7 @@ def _():
 
 @app.cell
 def _(pl):
-    df = pl.read_excel('indu.xlsx')
+    df = pl.read_excel('399317.xlsx')
     return (df,)
 
 
@@ -26,41 +26,34 @@ def _(df):
 @app.cell
 def _(df):
     df.columns = [
-    "code",
-    "name",
-    "中证一级行业分类代码",
-    "cat1",
-    "中证二级行业分类代码",
-    "cat2",
-    "中证三级行业分类代码",
-    "cat3",
-    "中证四级行业分类代码",
-    "cat4"
+      "日期",
+      "code",
+      "name",
+      "indu",
+      "mv",
+      "wt"
     ]
     return
 
 
 @app.cell
 def _(df, pl):
-    df.group_by(pl.col('cat1')).agg(pl.len()).sort(by='len',descending=True)
+    dft = df.with_columns(pl.col('mv', 'wt').cast(pl.Float32))
+    return (dft,)
+
+
+@app.cell
+def _(dft, pl):
+    dft.group_by(pl.col('indu')).agg([
+        pl.sum('mv'),
+        pl.count('code').alias('count'),
+        (pl.sum("mv") / pl.count("code")).alias("mv_per_count")
+    ]).sort('mv', descending=True)
     return
 
 
 @app.cell
-def _(df, pl):
-    df.with_columns(pl.col('code').str.contains('HK').alias('HK')).group_by('HK').agg(pl.len())
-    return
-
-
-@app.cell
-def _(df, pl):
-    df.group_by(pl.col('cat1')).agg(pl.col('cat4').n_unique().alias('cat4_count')).sort('cat4_count',descending=True)
-    return
-
-
-@app.cell
-def _(df, pl):
-    df.select(pl.col('cat4').n_unique())
+def _():
     return
 
 
