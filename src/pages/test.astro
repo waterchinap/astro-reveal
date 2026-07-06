@@ -1,5 +1,4 @@
 ---
-import SlideSimple from '../components/SlideSimple.astro';
 import RevealLayout from '../layouts/RevealLayout.astro';
 import Cover from '../components/Cover.astro';
 import TextOnlyLeft from '../components/TextOnlyLeft.astro';
@@ -9,8 +8,6 @@ import TitleLi from '../components/TitleLi.astro'
 import TitleOl from '../components/TitleOl.astro'
 import ImgOnly from '../components/ImgOnly.astro'
 import Stat from '../components/Stat.astro'
-import CardSlides from '../components/CardGroup.astro'
-import CardGroup from '../components/CardGroup.astro'
 import Slide from '../components/Slide.astro'
 const text = " Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build"
 const textlist = ["one", "two", "three", "four"]
@@ -42,7 +39,6 @@ const chinese = '蔚来法务部：有网络账号长期发布涉蔚来各品牌
 <RevealLayout>
 
   <Cover title='A BIG THING'  />
-	<SlideSimple title='test' />
 	<TitleH2 title={text} />
   <TextOnlyLeft title={text} />
   <TitleP title="Title And Paragrapy" text={text} />

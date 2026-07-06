@@ -22,10 +22,7 @@ logging.basicConfig(
     level=logging.INFO,
     format="[%(asctime)s] %(message)s",
     datefmt="%Y-%m-%d %H:%M:%S",
-    handlers=[
-        logging.FileHandler(LOG_FILE),
-        logging.StreamHandler(sys.stdout)
-    ]
+    handlers=[logging.FileHandler(LOG_FILE), logging.StreamHandler(sys.stdout)],
 )
 logger = logging.getLogger(__name__)
 
@@ -34,11 +31,7 @@ def run_cmd(cmd: list, cwd: Path = None, check: bool = False) -> tuple:
     """执行命令，返回 (成功与否, 输出)"""
     try:
         result = subprocess.run(
-            cmd,
-            cwd=cwd,
-            capture_output=True,
-            text=True,
-            check=check
+            cmd, cwd=cwd, capture_output=True, text=True, check=check
         )
         output = result.stdout + result.stderr
         return result.returncode == 0, output.strip()
@@ -87,10 +80,19 @@ def git_push_with_retry(cwd: Path) -> bool:
 
         # 判断是否是网络相关错误
         error_lower = output.lower()
-        is_network_error = any(keyword in error_lower for keyword in [
-            "connection", "timeout", "reset", "refused",
-            "network", "unreachable", "could not read", "ssl"
-        ])
+        is_network_error = any(
+            keyword in error_lower
+            for keyword in [
+                "connection",
+                "timeout",
+                "reset",
+                "refused",
+                "network",
+                "unreachable",
+                "could not read",
+                "ssl",
+            ]
+        )
 
         if attempt < MAX_RETRIES:
             if is_network_error:
@@ -111,10 +113,11 @@ def send_notification(message: str, webhook_url: str = None):
     if webhook_url:
         try:
             import requests
+
             requests.post(
                 webhook_url,
                 json={"msgtype": "text", "text": {"content": message}},
-                timeout=5
+                timeout=5,
             )
         except Exception as e:
             logger.warning(f"发送通知失败: {e}")
@@ -136,7 +139,7 @@ def main():
 
     # 2. 执行 update.py
     logger.info("▶️  执行 qieman.py...")
-    success, output = run_cmd(["uv", "run",  "qieman.py"], cwd=PROJECT_DIR)
+    success, output = run_cmd(["uv", "run", "qieman.py"], cwd=PROJECT_DIR)
     if not success:
         logger.error(f"❌ update.py 执行失败: {output}")
         sys.exit(1)
@@ -157,9 +160,7 @@ def main():
     # 5. git push (带重试)
     if not git_push_with_retry(PDIR):
         # 失败通知
-        send_notification(
-            f"⚠️ 每日更新 push 失败\n目录: {PDIR}\n请手动处理"
-        )
+        send_notification(f"⚠️ 每日更新 push 失败\n目录: {PDIR}\n请手动处理")
         sys.exit(1)
 
     logger.info("🎉 全部完成")
