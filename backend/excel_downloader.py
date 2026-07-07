@@ -1,18 +1,18 @@
 """
 使用 curl 执行批量下载脚本
-读取 YAML 配置文件，依次执行 curl 命令下载文件
+读取 TOML 配置文件，依次执行 curl 命令下载文件
 """
 
 import subprocess
 import time
 import random
 import shlex
+import tomllib
 from pathlib import Path
 from typing import Annotated
 from datetime import datetime
 
 import typer
-import yaml
 from loguru import logger
 from pydantic import BaseModel, Field, ValidationError
 
@@ -35,17 +35,13 @@ class DownloadConfig(BaseModel):
 
 
 def load_config(config_path: Path) -> DownloadConfig:
-    """加载并验证 YAML 配置文件"""
+    """加载并验证 TOML 配置文件"""
     if not config_path.exists():
         logger.error(f"配置文件不存在: {config_path}")
         raise typer.Exit(code=1)
 
-    with open(config_path, 'r', encoding='utf-8') as f:
-        data = yaml.safe_load(f)
-
-    if not data:
-        logger.error("配置文件为空")
-        raise typer.Exit(code=1)
+    with open(config_path, 'rb') as f:
+        data = tomllib.load(f)
 
     try:
         config = DownloadConfig(**data)
@@ -54,11 +50,6 @@ def load_config(config_path: Path) -> DownloadConfig:
         raise typer.Exit(code=1)
 
     return config
-
-
-import shlex # <--- 1. 在文件开头导入 shlex 模块
-
-# ... 其他代码 ...
 
 def execute_curl(curl_command: str, output_path: Path) -> bool:
     """执行 curl 命令下载文件"""
@@ -125,11 +116,11 @@ def download_with_retry(task: DownloadTask, output_path: Path, retry_times: int)
 
 @app.command()
 def run(
-    config_file: Annotated[str, typer.Argument(..., help="YAML 配置文件路径")],
+    config_file: Annotated[str, typer.Argument(..., help="TOML 配置文件路径")],
     output_dir: Annotated[str | None, typer.Option("--output", "-o", help="覆盖输出目录")] = None,
     dry_run: Annotated[bool, typer.Option("--dry-run", help="只打印不执行")] = False,
 ):
-    """根据 YAML 配置文件执行批量下载"""
+    """根据 TOML 配置文件执行批量下载"""
     config_path = Path(config_file)
     config = load_config(config_path)
 
@@ -184,9 +175,9 @@ def run(
 
 @app.command()
 def validate(
-    config_file: Annotated[str, typer.Argument(..., help="YAML 配置文件路径")],
+    config_file: Annotated[str, typer.Argument(..., help="TOML 配置文件路径")],
 ):
-    """验证 YAML 配置文件格式"""
+    """验证 TOML 配置文件格式"""
     config_path = Path(config_file)
     try:
         config = load_config(config_path)

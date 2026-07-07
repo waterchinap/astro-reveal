@@ -53,6 +53,12 @@ def _(dft, pl):
 
 
 @app.cell
+def _(dft):
+    dft.sort('mv', descending=True).group_by('indu', maintain_order=True).head(5)
+    return
+
+
+@app.cell
 def _():
     return
 
