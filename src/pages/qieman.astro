@@ -5,6 +5,8 @@ import CardTableSlide from '../components/CardTableSlide.astro'
 import TitleH2 from '../components/TitleH2.astro'
 import qieman from '../assets/qieman.json'
 import emnews from '../assets/emnews.json'
+import imgnews from '../assets/imgnews.json'
+import ImgOnly from '../components/ImgOnly.astro'
 
 const data = qieman.idxEvalList
 const emtitle = emnews
@@ -38,5 +40,8 @@ const pdate = new Date(qieman.date).toLocaleDateString('zh-CN')
 <Cover title='东方财富新闻' } />
 {emtitle.slice(0,100).map(item => <TitleH2 title={item[0]} content={item[2]} />)}
 
-</RevealLayout>
+{imgnews.map(item => 
+<ImgOnly title = {item.title} imgurl = {item.img} />)}
+
+</RevealLayout> 
 

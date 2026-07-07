@@ -4,6 +4,7 @@ const { imgurl='', title='' } = Astro.props;
 
 <section data-background-image={imgurl}>
 
-<h1>{title}</h1>
+<div class='r-stretch'>  </div>
+{ title && <h1 class='r-fit-text fragment fade-out'>{title}</h1>}
 
 </section>

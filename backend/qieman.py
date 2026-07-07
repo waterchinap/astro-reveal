@@ -3,7 +3,7 @@ import json
 import akshare as ak
 import pandas as pd
 from loguru import logger
-
+from imgnews import get_doc_arr
 
 
 def get_data_with_auto_headers():
@@ -11,12 +11,8 @@ def get_data_with_auto_headers():
         # 启动 Chromium 浏览器
         browser = p.chromium.launch(
             headless=True,
-            args=[
-                "--no-sandbox",
-                "--disable-dev-shm-usage",
-                "--dns-prefetch-disable"
-            ]                        
-        ) # 改为 False 可以看到浏览器操作
+            args=["--no-sandbox", "--disable-dev-shm-usage", "--dns-prefetch-disable"],
+        )  # 改为 False 可以看到浏览器操作
         context = browser.new_context()
         page = context.new_page()
 
@@ -41,22 +37,23 @@ def get_data_with_auto_headers():
         browser.close()
         return captured_data
 
+
 if __name__ == "__main__":
     result = get_data_with_auto_headers()
-    
+
     if result["headers"]:
         logger.info("\n--- 自动化提取的关键 Header ---")
         logger.info(f"x-sign: {result['headers'].get('x-sign')}")
         logger.info(f"x-request-id: {result['headers'].get('x-request-id')}")
-        
+
         logger.info("\n--- 获取到的数据预览 ---")
         # logger.info(result["json"])
-        with open('../src/assets/qieman.json', 'w') as f:
-            json.dump(result['json'], f)
+        with open("../src/assets/qieman.json", "w") as f:
+            json.dump(result["json"], f)
     else:
         logger.info("未能捕获到目标请求，请检查 URL 是否正确。")
 
     emnews = ak.stock_info_global_em()
-    emnews.to_json('../src/assets/emnews.json', orient='values',force_ascii=False)
-    logger.info('json saved')
-
+    emnews.to_json("../src/assets/emnews.json", orient="values", force_ascii=False)
+    logger.info("json saved")
+    _ = get_doc_arr()
