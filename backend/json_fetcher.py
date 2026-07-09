@@ -28,11 +28,11 @@ def get_a_json(data: JsonInfo):
     with open(fn, "w") as f:
         json.dump(r.json(), f, ensure_ascii=False, indent=4)
 
-    logger.info(r.json())
+    logger.info(f"get json: {fn}")
 
 
 @app.command()
-def main(name: str):
+def get_json(name: str):
     item = JsonInfo(name=name, url=url_map[name])
     get_a_json(item)
 

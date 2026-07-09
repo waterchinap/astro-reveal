@@ -3,17 +3,22 @@ const {items} = Astro.props;
 const entries = Object.entries(items)
 const [titlekv, ...restkv] = entries
 const cardtitle = titlekv[1]
-const colorMap = {LOW:'green', MID:'yellow', HIGH: 'red'}
-const groupColor = colorMap[items['group']] || 'white'
+
+// 辅助函数：判断数字正负并返回对应颜色类名
+const getColorClass = (num) => {
+  if (typeof num !== 'number') return ''; // 非数字不添加颜色
+  return num > 0 ? '!text-red-500' : '!text-green-500';
+}
 ---
 
-<div class="flex flex-col !border border-solid border-white rounded-sm w-4/5 mx-auto !p-8 ">
-  <h1 class='!font-bold' style={`color:${groupColor}`}>{cardtitle}</h1>
-  {restkv.slice(0,-1).map(([key, value])=> (
+<div class="flex flex-col !border border-solid border-white rounded-sm w-4/5 mx-auto h-4/5 !p-8 ">
+  <h1 class='!font-bold'>{cardtitle}</h1>
+  
+  {restkv.map(([key, value])=> (
   <div class="flex flex-row flex-nowrap justify-between">
-    <h2>{key}</h2>
-    <h2>{value}</h2>
+    <h2 class={getColorClass(value)}>{key}</h2>
+    <!-- 根据值的正负动态添加颜色类 -->
+    <h2 class={getColorClass(value)}>{value}</h2>
   </div>
   ))}
 </div>
-

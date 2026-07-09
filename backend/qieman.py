@@ -4,6 +4,7 @@ import akshare as ak
 import pandas as pd
 from loguru import logger
 from imgnews import get_doc_arr
+from json_fetcher import get_json
 
 
 def get_data_with_auto_headers():
@@ -56,4 +57,7 @@ if __name__ == "__main__":
     emnews = ak.stock_info_global_em()
     emnews.to_json("../src/assets/emnews.json", orient="values", force_ascii=False)
     logger.info("json saved")
+
     _ = get_doc_arr()
+
+    _ = get_json("index_perf")

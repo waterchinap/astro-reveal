@@ -7,7 +7,7 @@ import qieman from '../assets/qieman.json'
 import emnews from '../assets/emnews.json'
 import imgnews from '../assets/imgnews.json'
 import ImgOnly from '../components/ImgOnly.astro'
-
+import CsiIndexPerfG from '../components/CsiIndexPerfG.astro'
 const data = qieman.idxEvalList
 const emtitle = emnews
 
@@ -42,6 +42,7 @@ const pdate = new Date(qieman.date).toLocaleDateString('zh-CN')
 
 {imgnews.map(item => 
 <ImgOnly title = {item.title} imgurl = {item.img} />)}
+<CsiIndexPerfG />
 
 </RevealLayout> 
 
