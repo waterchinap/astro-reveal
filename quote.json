@@ -1,0 +1,22 @@
+[
+  {
+    "code": "000001",
+    "name": "平安银行",
+    "market": "SZ/BJ",
+    "price": 10.55,
+    "changePercent": -0.47,
+    "change": -0.05,
+    "open": 10.55,
+    "high": 10.59,
+    "low": 10.43,
+    "prevClose": 10.6,
+    "volume": 432226,
+    "turnover": 454965387.37,
+    "turnoverRate": 0.22,
+    "amplitude": 1.51,
+    "peDynamic": 3.52,
+    "priceBook": 0.45,
+    "marketCap": 204732436989,
+    "floatMarketCap": 204729086889
+  }
+]
