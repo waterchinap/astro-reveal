@@ -1,0 +1,10 @@
+[Unit]
+Description=Astro reveal daily data update
+Documentation=https://github.com/anomalyco/astro-reveal
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/eric/00works/astro-reveal/backend
+ExecStart=/home/eric/.local/bin/uv run update.py
+StandardOutput=journal
+StandardError=journal

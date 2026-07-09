@@ -1,0 +1,14 @@
+[Unit]
+Description=Daily data update timer for astro-reveal (09:40, 11:40, 15:40, 19:40)
+Documentation=https://github.com/anomalyco/astro-reveal
+
+[Timer]
+OnCalendar=*-*-* 09:40:00
+OnCalendar=*-*-* 11:40:00
+OnCalendar=*-*-* 15:40:00
+OnCalendar=*-*-* 19:40:00
+Persistent=true
+RandomizedDelaySec=0
+
+[Install]
+WantedBy=timers.target
