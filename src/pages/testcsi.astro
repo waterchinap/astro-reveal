@@ -1,0 +1,13 @@
+---
+import RevealLayout from '../layouts/RevealLayout.astro'
+import imgnews from '../assets/imgnews.json'
+import ImgOnly from '../components/ImgOnly.astro'
+
+---
+
+<RevealLayout>
+{imgnews.map(item => 
+<ImgOnly title = {item.title} imgurl = {item.img} />
+)}
+</RevealLayout>
+

@@ -1,0 +1,172 @@
+{
+    "code": "200",
+    "msg": "Success",
+    "data": {
+        "sectorChangeMapList": {
+            "hkex_up": [
+                {
+                    "sector": "改性塑料",
+                    "sectorEn": "Modified Plastics",
+                    "changePct": "11.84%"
+                },
+                {
+                    "sector": "电网自动化",
+                    "sectorEn": "Grid Automation Equipment",
+                    "changePct": "10.23%"
+                },
+                {
+                    "sector": "黑色家电",
+                    "sectorEn": "Brown Goods",
+                    "changePct": "9.77%"
+                },
+                {
+                    "sector": "超市与便利店",
+                    "sectorEn": "Supermarkets & Convenience Stores",
+                    "changePct": "8.07%"
+                },
+                {
+                    "sector": "专业工程",
+                    "sectorEn": "Professional Engineering",
+                    "changePct": "5.77%"
+                }
+            ],
+            "sse_up": [
+                {
+                    "sector": "集成电路封测",
+                    "sectorEn": "IC Sealing & Testing",
+                    "changePct": "6.52%"
+                },
+                {
+                    "sector": "其他电子",
+                    "sectorEn": "Other Electronics",
+                    "changePct": "4.76%"
+                },
+                {
+                    "sector": "畜牧产品",
+                    "sectorEn": "Livestock Products",
+                    "changePct": "4.62%"
+                },
+                {
+                    "sector": "船舶及其他航运设备",
+                    "sectorEn": "Ships & Other Shipping Equipment",
+                    "changePct": "4.16%"
+                },
+                {
+                    "sector": "轮胎",
+                    "sectorEn": "Tires",
+                    "changePct": "4.02%"
+                }
+            ],
+            "hkex_down": [
+                {
+                    "sector": "抵押信贷机构",
+                    "sectorEn": "Mortgage Finance",
+                    "changePct": "-13.98%"
+                },
+                {
+                    "sector": "被动元件",
+                    "sectorEn": "Passive Components",
+                    "changePct": "-12.21%"
+                },
+                {
+                    "sector": "印制电路板",
+                    "sectorEn": "Printed Circuit Boards",
+                    "changePct": "-11.32%"
+                },
+                {
+                    "sector": "照明电器",
+                    "sectorEn": "Lighting Devices",
+                    "changePct": "-10.61%"
+                },
+                {
+                    "sector": "其他专用机械",
+                    "sectorEn": "Other Special Machinery",
+                    "changePct": "-8.87%"
+                }
+            ],
+            "szse_down": [
+                {
+                    "sector": "玻璃纤维",
+                    "sectorEn": "Glass Fiber",
+                    "changePct": "-10.62%"
+                },
+                {
+                    "sector": "风电",
+                    "sectorEn": "Wind Power",
+                    "changePct": "-10.46%"
+                },
+                {
+                    "sector": "玻璃",
+                    "sectorEn": "Glass",
+                    "changePct": "-9.41%"
+                },
+                {
+                    "sector": "钨钼",
+                    "sectorEn": "Tungsten & Molybdenum",
+                    "changePct": "-7.90%"
+                },
+                {
+                    "sector": "氟化工",
+                    "sectorEn": "Fluorine Chemicals",
+                    "changePct": "-7.07%"
+                }
+            ],
+            "sse_down": [
+                {
+                    "sector": "环境监测",
+                    "sectorEn": "Environmental Monitoring",
+                    "changePct": "-18.09%"
+                },
+                {
+                    "sector": "磨具磨料",
+                    "sectorEn": "Grinding Tools & Abrasives",
+                    "changePct": "-10.01%"
+                },
+                {
+                    "sector": "玻璃纤维",
+                    "sectorEn": "Glass Fiber",
+                    "changePct": "-8.63%"
+                },
+                {
+                    "sector": "其他稀有金属",
+                    "sectorEn": "Other Rare Metals",
+                    "changePct": "-8.57%"
+                },
+                {
+                    "sector": "改性塑料",
+                    "sectorEn": "Modified Plastics",
+                    "changePct": "-8.30%"
+                }
+            ],
+            "szse_up": [
+                {
+                    "sector": "有机硅",
+                    "sectorEn": "Organic Silicon",
+                    "changePct": "9.80%"
+                },
+                {
+                    "sector": "摩托车及其他",
+                    "sectorEn": "Motorcycles & Other Vehicles",
+                    "changePct": "6.11%"
+                },
+                {
+                    "sector": "园区",
+                    "sectorEn": "Zone",
+                    "changePct": "5.73%"
+                },
+                {
+                    "sector": "油气开采",
+                    "sectorEn": "Oil & Gas Exploitation",
+                    "changePct": "4.88%"
+                },
+                {
+                    "sector": "电脑与外围设备",
+                    "sectorEn": "Computers & Peripherals",
+                    "changePct": "4.68%"
+                }
+            ]
+        },
+        "tradeDate": "20260706"
+    },
+    "success": true
+}

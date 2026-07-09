@@ -1,0 +1,114 @@
+{
+    "code": "200",
+    "msg": "Success",
+    "data": {
+        "tradeDate": "20260708",
+        "mainIndexPerfList": [
+            {
+                "tradeDate": "20260707",
+                "indexCode": "000001",
+                "indexName": "上证指数",
+                "indexNameEn": "SSE Index",
+                "closeIndex": 3990.24,
+                "change": -51.0,
+                "changePct": -1.26,
+                "changeThisYear": 21.4,
+                "changePctThisYear": 0.54,
+                "valueChange": -2357.42,
+                "valueChangePct": -16.46
+            },
+            {
+                "tradeDate": "20260707",
+                "indexCode": "000010",
+                "indexName": "上证180",
+                "indexNameEn": "SSE 180",
+                "closeIndex": 9988.15,
+                "change": -146.14,
+                "changePct": -1.44,
+                "changeThisYear": -27.71,
+                "changePctThisYear": -0.28,
+                "valueChange": -855.08,
+                "valueChangePct": -17.63
+            },
+            {
+                "tradeDate": "20260707",
+                "indexCode": "000016",
+                "indexName": "上证50",
+                "indexNameEn": "SSE 50",
+                "closeIndex": 2921.89,
+                "change": -36.08,
+                "changePct": -1.22,
+                "changeThisYear": -109.24,
+                "changePctThisYear": -3.6,
+                "valueChange": -420.13,
+                "valueChangePct": -16.96
+            },
+            {
+                "tradeDate": "20260707",
+                "indexCode": "000300",
+                "indexName": "沪深300",
+                "indexNameEn": "CSI 300",
+                "closeIndex": 4792.26,
+                "change": -49.74,
+                "changePct": -1.03,
+                "changeThisYear": 162.32,
+                "changePctThisYear": 3.51,
+                "valueChange": -1453.29,
+                "valueChangePct": -16.01
+            },
+            {
+                "tradeDate": "20260707",
+                "indexCode": "000009",
+                "indexName": "上证380",
+                "indexNameEn": "SSE 380",
+                "closeIndex": 7298.32,
+                "change": -102.03,
+                "changePct": -1.38,
+                "changeThisYear": 710.22,
+                "changePctThisYear": 10.78,
+                "valueChange": -639.33,
+                "valueChangePct": -18.83
+            },
+            {
+                "tradeDate": "20260707",
+                "indexCode": "000015",
+                "indexName": "红利指数",
+                "indexNameEn": "SSE Dividend",
+                "closeIndex": 2987.2,
+                "change": -43.52,
+                "changePct": -1.44,
+                "changeThisYear": -50.42,
+                "changePctThisYear": -1.66,
+                "valueChange": -53.54,
+                "valueChangePct": -14.16
+            },
+            {
+                "tradeDate": "20260707",
+                "indexCode": "000922",
+                "indexName": "中证红利",
+                "indexNameEn": "CSI Dividend",
+                "closeIndex": 5239.37,
+                "change": -75.55,
+                "changePct": -1.42,
+                "changeThisYear": -264.61,
+                "changePctThisYear": -4.81,
+                "valueChange": -104.6,
+                "valueChangePct": -16.73
+            },
+            {
+                "tradeDate": "20260707",
+                "indexCode": "000905",
+                "indexName": "中证500",
+                "indexNameEn": "CSI 500",
+                "closeIndex": 8508.79,
+                "change": -142.35,
+                "changePct": -1.65,
+                "changeThisYear": 1043.21,
+                "changePctThisYear": 13.97,
+                "valueChange": -1163.75,
+                "valueChangePct": -17.98
+            }
+        ]
+    },
+    "success": true
+}

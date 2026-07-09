@@ -1,0 +1,19 @@
+---
+const {items} = Astro.props;
+const entries = Object.entries(items)
+const [titlekv, ...restkv] = entries
+const cardtitle = titlekv[1]
+const colorMap = {LOW:'green', MID:'yellow', HIGH: 'red'}
+const groupColor = colorMap[items['group']] || 'white'
+---
+
+<div class="flex flex-col !border border-solid border-white rounded-sm w-4/5 mx-auto !p-8 ">
+  <h1 class='!font-bold' style={`color:${groupColor}`}>{cardtitle}</h1>
+  {restkv.slice(0,-1).map(([key, value])=> (
+  <div class="flex flex-row flex-nowrap justify-between">
+    <h2>{key}</h2>
+    <h2>{value}</h2>
+  </div>
+  ))}
+</div>
+
