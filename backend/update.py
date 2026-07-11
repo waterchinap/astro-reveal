@@ -133,9 +133,9 @@ def main():
     logger.info("🚀 开始每日更新任务")
 
     # 1. 检查项目目录
-    if not PROJECT_DIR.exists():
-        logger.error(f"❌ 项目目录不存在: {PROJECT_DIR}")
-        sys.exit(1)
+    # if not PROJECT_DIR.exists():
+    #     logger.error(f"❌ 项目目录不存在: {PROJECT_DIR}")
+    #     sys.exit(1)
 
     # 2. 执行 update.py
     logger.info("▶️  执行 qieman.py...")
