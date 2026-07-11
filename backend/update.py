@@ -12,7 +12,7 @@ from datetime import datetime
 # ============ 配置 ============
 PROJECT_DIR = Path("/home/eric/00works/astro-reveal/backend")  # 改成你的项目路径
 PDIR = PROJECT_DIR.parent
-LOG_FILE = Path('/home/eric/') / "daily_update.log"
+LOG_FILE = Path.home() / "daily_update.log"
 MAX_RETRIES = 5
 RETRY_DELAY_BASE = 5  # 基础延迟秒数，会递增
 # ==============================
@@ -133,9 +133,9 @@ def main():
     logger.info("🚀 开始每日更新任务")
 
     # 1. 检查项目目录
-    # if not PROJECT_DIR.exists():
-    #     logger.error(f"❌ 项目目录不存在: {PROJECT_DIR}")
-    #     sys.exit(1)
+    if not PROJECT_DIR.exists():
+        logger.error(f"❌ 项目目录不存在: {PROJECT_DIR}")
+        sys.exit(1)
 
     # 2. 执行 update.py
     logger.info("▶️  执行 qieman.py...")
