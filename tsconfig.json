@@ -2,40 +2,37 @@
   "extends": "astro/tsconfigs/strict",
   "include": [
     ".astro/types.d.ts",
-    "**/*"
+    "**/*",
+    "./worker-configuration.d.ts"
   ],
   "compilerOptions": {
     "module": "commonjs",
     "target": "es6",
     "checkJs": false,
-    /* 常见的放宽类型检查规则（忽略某些特定报错） */
-    "noImplicitAny": false, // 允许隐式的 any 类型（最常用的放宽，减少大量类型定义负担）
-    "strictNullChecks": true, // 建议保持 true，但在老项目中可设为 false 以忽略所有 null/undefined 报错
-    "skipLibCheck": true, // 跳过所有 .d.ts 文件的类型检查（极大地提升编译速度，忽略第三方库的类型报错）
-    "allowJs": true, // 允许编译 JavaScript 文件
-    "noUnusedLocals": false, // 不检查未使用的局部变量（忽略未使用变量的报错）
-    "noUnusedParameters": false, // 不检查未使用的函数参数
-    "noImplicitReturns": false, // 允许函数路径没有显式返回值
-    "suppressImplicitAnyIndexErrors": true, // 忽略对象动态属性访问的隐式 any 报错 (如 obj[dynamicKey])
-    "forceConsistentCasingInFileNames": false, // 不强制文件名大小写一致性（某些系统下可避免无谓报错）
-    /* 解析与输出 */
+    "noImplicitAny": false,
+    "strictNullChecks": true,
+    "skipLibCheck": true,
+    "allowJs": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noImplicitReturns": false,
+    "suppressImplicitAnyIndexErrors": true,
+    "forceConsistentCasingInFileNames": false,
     "esModuleInterop": true,
-    "resolveJsonModule": true, // 允许 import xxx.json
+    "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  /* 常见的类型检查排除目录（被 exclude 的文件不会被类型检查） */
   "exclude": [
-    "node_modules", // 1. 必须排除：第三方依赖
-    "dist", // 2. 排除构建输出目录
-    "build", // 3. 排除构建输出目录
-    // ".astro",                  // 4. 排除 Astro 自动生成的类型目录（如果是 Astro 项目）
-    "**/*.spec.ts", // 5. 排除测试文件（看团队规范，有时测试文件不需要严格类型检查）
-    "**/*.test.ts", // 6. 排除测试文件
-    "**/*.config.js", // 7. 排除配置文件（如 vite.config.js / webpack.config.js）
-    "**/*.config.ts", // 8. 排除配置文件
-    "**/*.generated.ts", // 9. 排除自动生成的代码
-    "public", // 10. 排除静态资源目录
-    "scripts" // 11. 排除 Node.js 脚本目录
+    "node_modules",
+    "dist",
+    "build",
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "**/*.config.js",
+    "**/*.config.ts",
+    "**/*.generated.ts",
+    "public",
+    "scripts"
   ]
 }
