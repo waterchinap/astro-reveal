@@ -39,3 +39,9 @@ uv.lock
 # Backend specific
 backend/.venv/
 backend/__pycache__/
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
