@@ -9,14 +9,17 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "generate-types": "wrangler types"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^14.2.0",
     "@tailwindcss/vite": "^4.3.1",
-    "astro": "^7.0.6",
+    "astro": "^7.2.0",
     "daisyui": "^5.5.23",
     "reveal.js": "^6.0.1",
-    "tailwindcss": "^4.3.1"
+    "tailwindcss": "^4.3.1",
+    "wrangler": "^4.120.0"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.20"
